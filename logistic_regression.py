@@ -50,11 +50,12 @@ class LogisticRegressor:
         J = -np.sum(y * np.log(a) + (1 - y) * np.log(1 - a)) / m
         grad = np.dot((a - y).T, X) / m
         if self.lambda_value != 0 and self.regularisation == "l2":
-            J += self.lambda_value * np.sum(theta**2) / m
-            grad += 2 * self.lambda_value * theta.T / m
+            # Do not take bias term into account for regularization
+            J += self.lambda_value * np.sum(theta[1:] ** 2) / m
+            grad += 2 * self.lambda_value * theta.T[:, 1:] / m
         elif self.lambda_value != 0 and self.regularisation == "l1":
-            J += self.lambda_value * np.sum(np.abs(theta)) / m
-            grad += self.lambda_value * np.sign(theta.T) / m
+            J += self.lambda_value * np.sum(np.abs(theta[1:])) / m
+            grad += self.lambda_value * np.sign(theta.T[:, 1:]) / m
         return (J, grad)
 
     def gradient_descent(self, X, y, theta, m):
