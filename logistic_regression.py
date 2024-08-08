@@ -129,8 +129,12 @@ if __name__ == "__main__":
     import matplotlib.pyplot as plt
 
     plt.scatter(X[:, 1], X[:, 2], c=y)
+    plt.title("Scatter plot of the data")
+    plt.xlabel("Feature 1")
+    plt.ylabel("Feature 2")
     # We also plot the line of seperation
     x_values = np.linspace(-2, 5, 100)
     y_values = -(theta[0] + theta[1] * x_values) / theta[2]
-    plt.plot(x_values, y_values)
+    plt.plot(x_values, y_values, label="Decision Boundary")
+    plt.legend()
     plt.show()

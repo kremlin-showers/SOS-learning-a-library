@@ -91,4 +91,6 @@ if __name__ == "__main__":
     X_train, X_train_means, X_train_stds = preprocessing.Normalize_X(X_train)
     X_test = (X_test - X_train_means) / X_train_stds
     y_pred = KNN_Classifier(X_train, y_train, X_test, k=3)
+    print("-------------------")
+    print("The Final Accuracy Acheived")
     print(preprocessing.accuracy(y_test, y_pred))

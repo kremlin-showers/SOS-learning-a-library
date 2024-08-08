@@ -47,6 +47,7 @@ if __name__ == "__main__":
     X = X.reshape(-1, 1)
     y = y.reshape(-1, 1)
     plt.plot(X, y, "o")
+    plt.title("Data Points")
     plt.show()
     topred = np.linspace(0, 20, 5)
     topred = topred.reshape(-1, 1)
@@ -55,4 +56,5 @@ if __name__ == "__main__":
     y_pred = lr.predict(topred)
     plt.plot(X, y, "o")
     plt.plot(topred, y_pred, "ro")
+    plt.title("Locally Weighted Regression Predictions in Red")
     plt.show()

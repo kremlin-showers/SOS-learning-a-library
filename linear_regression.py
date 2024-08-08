@@ -64,7 +64,7 @@ class LinearRegressionBatchGD:
                     X_batch, y_batch, self.weights
                 )
                 J_1 = self.rmse_loss(X, y, self.weights)
-                if J_1_ - J_0 > 1e-6:
+                if J_1 - J_0 > 1e-6:
                     self.weights = current_weights
                     self.learning_rate /= 2
                 else:
@@ -103,11 +103,16 @@ if __name__ == "__main__":
     lr.fit(X, y)
 
     plt.scatter(X[:, 1], y, color="red")
-    plt.plot(X[:, 1], lr.predict(X), color="blue")
+    plt.plot(X[:, 1], lr.predict(X), color="blue", label="Gradient Descent")
+    plt.legend()
+    plt.title("Batch Gradient Descent")
     plt.show()
 
     # Plot the errors too
     plt.plot(range(len(lr.errors)), lr.errors)
+    plt.title("Loss vs Epochs")
+    plt.xlabel("Epochs")
+    plt.ylabel("Loss")
     plt.show()
 
     # Plot the analytical solution
@@ -115,5 +120,6 @@ if __name__ == "__main__":
     print(lr.rmse_loss(X, y, weights))
 
     plt.scatter(X[:, 1], y, color="red")
-    plt.plot(X[:, 1], lr.predict(X, weights), color="blue")
+    plt.plot(X[:, 1], lr.predict(X, weights), color="blue", label="Analytical Solution")
+    plt.title("The Analytical Solution")
     plt.show()

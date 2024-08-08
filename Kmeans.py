@@ -77,8 +77,10 @@ if __name__ == "__main__":
     import matplotlib.pyplot as plt
 
     plt.scatter(X[:, 0], X[:, 1], c=kmeans.clusters)
+    plt.title("Kmeans Clustering")
     plt.show()
     # Also plot the elbow method
     sse = kmeans.elbow_method()
     plt.plot(sse)
+    plt.title("Elbow Method")
     plt.show()
