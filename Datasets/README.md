@@ -24,3 +24,6 @@ Try connecting to the bonus challenge remotely using:
 ```bash
 nc challs.breachers.in 1345
 ```
+
+# Submission
+As before submit a writeup, the flag and the solve.py. Bonus Bonus for explaining why the previous exploit does not work here.
